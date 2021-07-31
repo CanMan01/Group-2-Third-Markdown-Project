@@ -1,8 +1,6 @@
 ---
-title: "A Tufte Handout Example"
-runningheader: "Tufte Handout with R Markdown" # only for pdf output
-subtitle: "An implementation in R Markdown" # only for html output
-authors: "Raphael Lee, Javier Bolong, Allen Abel, Tricia Pulmano"
+title: "Group 2: Third Markdown Project"
+author: "by Raphael Lee, Javier Bolong, Allen Abel, Tricia Pulmano"
 date: "`r Sys.Date()`"
 output:
   tufte::tufte_html: default
@@ -16,64 +14,76 @@ bibliography: skeleton.bib
 link-citations: yes
 ---
 
-[START HERE]
 
-#Intro
+## Introduction
 
-#Parameters of Interest
+![](C:/Users/doibl/Desktop/Pictures/Third Markdown Photos/smart-city.jpg)
+
+  <font size = "4.5">
+  
+  According to the research paper of Tatyana and company, “At the present moment of society’s development, the concept of Smart City Development is attracting more and more attention.” 
+  
+  The concept itself in essence, tries to improve the living conditions of the denizens inside the city through proper administration of the environment and its accompanying resources. There are many ways to be able to achieve this. 
+
+  
+The authors wrote examples such as “smart environment (renewable energy, resource saving, etc)” and “smart mobility (transport networks, smart parking, Wifi coverage, etc), but the study instead focused specifically on tire recycling.
+
+![](C:/Users/doibl/Desktop/Pictures/Third Markdown Photos/pirelli.jpg)
+
+This was done due to tire waste being an environmental problem in Russia. (the country which mainly benefited from this study) 
+
+
+![](C:/Users/doibl/Desktop/Pictures/Third Markdown Photos/edsa-traffic.jpg)
+
+Fortunately, given the current trend of city development as stated earlier, the study can still benefit the country of the Philippines’ endeavor to modernize. However, for this research paper we will be testing whether the current programs in Europe, on average, recycle more than the mean waste globally. This will determine whether the present programs are sufficient or still need improving for the coming future.  
+
+</font>
+
+# Parameters of Interest
 
 The Parameter of interest is the claimed average total wasted recycled that is represented by μ
 
-#Formulating the Null and Alternative Hypothesis
+
+# Formulating the Null and Alternative Hypothesis
 
 Knowing the parameter of interest, we can now formulate the hypothesis
 
 The Null Hypothesis is represented by:
+
 $H_0: \mu =  60$
 
 While the Alternate Hypothesis is represented by:
+
 $H_1: \mu > 60$
 
-#Computation
+
+# Computation
 We are testing this set of data on whether the amount of tires recycled on average, is more than 60 million tons.
 
 First we have to look at the data given at the paper 
 
-``` {r data, echo=FALSE}
+``` {r data1, include=TRUE, echo=FALSE}
 library(readxl)
-Tables <- read_excel("~/GitHub/Group-2-Third-Markdown-Project/Tables.xlsx")
-Waste <- Tables$`Waste tire`
-Recycled <- Tables$`Amount of recyled`
-summary(Waste,Recycled)
+Tables <- read_excel("~/GitHub/Group-2-Third-Markdown-Project/tire1.xlsx")
 
-
-plot(Waste, Recycled)
-
+library(knitr)
+kable(Tables)
 ```
+
 
 We can use the t-test which is represented by the equation due to it having less than 30 samples and no standard deviation given:
 
-$t = \frac{\bar{x}-\mu}{s/\sqrt{n}}$
+$$t = \frac{\bar{x}-\mu}{s/\sqrt{n}}$$
 
 
 However given this data, we should first look and calculate for the Population mean and Population variance since its not given in the paper.
 
 To look for these we can use these values to help us.
 
-``` {r data, echo=FALSE}
-library(readxl)
-Tables <- read_excel("~/GitHub/Group-2-Third-Markdown-Project/Tables.xlsx")
-Waste <- Tables$`Waste tire`
-Recycled <- Tables$`Amount of recyled`
-summary(Waste,Recycled)
 
+$$\bar{x} = 94.55153448$$
 
-plot(Waste, Recycled)
-
-```
-$\bar{x} = 94.55153448$
-
-$\sigma^2 = 15,362.6468$
+$$\sigma^2 = 15,362.6468$$
 
 Furthermore since the significance is not also given, we decided to use a confidence interval of 95% for this data set.
 
@@ -82,6 +92,11 @@ Meaning, $\alpha=0.05$
 Then, we select 10 samples randomly and conduct a t-test on the sample selected
 
 Using a randomizer, we got the following samples from the paper:
+
+
+These values in parenthesis are the amount of tires recycled, computed through:
+
+Tire Waste x Percentage of Tires recycled
 
 1. Denmark (38.0016)
 2. Greece (30.0016)
@@ -95,12 +110,15 @@ Using a randomizer, we got the following samples from the paper:
 10. Turkey (136.006)
 
 Using these 10 sample we can now compute for Sample mean and standard deviation that will be used for the t-test:
-Sample Mean ($\bar{x}$)= 117.60322
-Sample Standard Deviation = 139.613811
+
+$$\bar{x}= 117.60322$$
+$$s = 139.613811$$ 
 
 With all the needed value, we can now proceed to substitute them and solve the t-test using the following codes:
 
-Solving for T:
+Solving for t:^[$$\bar{x}= 117.60322$$] ^[$$s = 139.613811$$] ^[$$\mu=60$$]
+
+$$t=\frac{117.60322-60}{139.613811/\sqrt{10}}$$
 ``` {r t-test, include=TRUE, echo=FALSE}
 t <- (117.60322-60)/(139.613811/sqrt(10))
 t
@@ -113,17 +131,6 @@ u
 ```
 `r t` < `r u`
 
-#Discussion
-
-The results gathered after hypothesis testing indicate that we fail to reject the null hypothesis stating that the mean amount of tires recycled is equal to 60 million tons. Since the global amount of tire waste is estimated to range from 60 to 80 million tons, it means that there are more tires being wasted than those being recycled. This can be attributed to the fact that even though there are few European countries able to fully recycle tires, the total amount of tires they generate is significantly lower than those countries unable to recycle all their tires. For instance, even though Denmark has a tire recycling rate of 97%, since their number of tires is only 39 million tons, the amount of recycled tires will be unable to match the tire waste from Turkey which has 260 million tons of tires while only having 52% recycling rate.
-
-This newfound information tells us that the tire recycling program has to be improved especially in countries generating a large amount of tires in order for the program to make significant effects in improving the environmental situation in Europe. Those countries with lower tire recycling rates can try to follow the tire recycling strategies of those countries with high recycling rates.
-
-
-#Conclusion 
- 
-After comparing the  t value above to the value obtained in the t distribution with a confidence interval of 95% we concluded that we fail to reject the null hypothesis due to the  that the t test value is less than the t distribution value
-
 Furthermore, if we can also find the p-value of the equation
 ``` {r pvalue, echo=FALSE}
 p <- 1-pnorm(t)
@@ -135,6 +142,25 @@ Since we got a p-value that is more than 0.05, it supported the evidence to fail
 `r p` > 0.05
 
 
+# Discussion
 
- 
+The results gathered after hypothesis testing indicate that we fail to reject the null hypothesis stating that the mean amount of tires recycled is equal to 60 million tons. 
+
+![](C:/Users/doibl/Desktop/Pictures/Third Markdown Photos/recycle.jpg)
+
+Since the global amount of tire waste is estimated to range from 60 to 80 million tons, it means that there are more tires being wasted than those being recycled. This can be attributed to the fact that even though there are few European countries able to fully recycle tires, the total amount of tires they generate is significantly lower than those countries unable to recycle all their tires. 
+
+
+For instance, even though Denmark has a tire recycling rate of 97%, since their number of tires is only 39 million tons, the amount of recycled tires will be unable to match the tire waste from Turkey which has 260 million tons of tires while only having 52% recycling rate.
+
+
+# Conclusion
+
+There is not enough conclusive evidence to show that the current tire recycling programs in Europe are able to recycle the global average of 60 million tons of tire waste a year. This is due to the fact that the data leads us to fail to reject the null hypothesis.
+
+![](C:/Users/doibl/Desktop/Pictures/Third Markdown Photos/tire-recycling.jpg)
+
+This information tells us that the tire recycling program has to be improved especially in countries generating a large amount of tires in order for the program to make significant effects in improving the environmental situation in Europe. Those countries with lower tire recycling rates can try to follow the tire recycling strategies of those countries with high recycling rates.
+
+
 
