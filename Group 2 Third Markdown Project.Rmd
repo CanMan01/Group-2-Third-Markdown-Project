@@ -113,6 +113,13 @@ u
 ```
 `r t` < `r u`
 
+#Discussion
+
+The results gathered after hypothesis testing indicate that we fail to reject the null hypothesis stating that the mean amount of tires recycled is equal to 60 million tons. Since the global amount of tire waste is estimated to range from 60 to 80 million tons, it means that there are more tires being wasted than those being recycled. This can be attributed to the fact that even though there are few European countries able to fully recycle tires, the total amount of tires they generate is significantly lower than those countries unable to recycle all their tires. For instance, even though Denmark has a tire recycling rate of 97%, since their number of tires is only 39 million tons, the amount of recycled tires will be unable to match the tire waste from Turkey which has 260 million tons of tires while only having 52% recycling rate.
+
+This newfound information tells us that the tire recycling program has to be improved especially in countries generating a large amount of tires in order for the program to make significant effects in improving the environmental situation in Europe. Those countries with lower tire recycling rates can try to follow the tire recycling strategies of those countries with high recycling rates.
+
+
 #Conclusion 
  
 After comparing the  t value above to the value obtained in the t distribution with a confidence interval of 95% we concluded that we fail to reject the null hypothesis due to the  that the t test value is less than the t distribution value
