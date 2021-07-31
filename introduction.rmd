@@ -1,0 +1,10 @@
+---
+title: "Introduction"
+author: "Javier Bolong"
+date: "7/31/2021"
+output: html_document
+---
+
+##*Introduction*
+
+  <font size = "3">According to the research paper of Tatyana and company, “At the present moment of society’s development, the concept of Smart City Development is attracting more and more attention.” The concept itself in essence, tries to improve the living conditions of the denizens inside the city through proper administration of the environment and its accompanying resources. There are many ways to be able to achieve this. The authors wrote examples such as “smart environment (renewable energy, resource saving, etc)” and “smart mobility (transport networks, smart parking, wifi coverage, etc), but the study instead focused specifically on tire recycling.  This was done due to tire waste being an environmental problem in Russia (the country which mainly benefited from this study). Fortunately, given the current trend of city development as stated earlier, the study can still benefit the country of the Philippines’ endeavor to modernize. However, for this research paper we will be testing whether the current programs in Europe, on average, recycle more than the mean waste globally. This will determine whether the present program are sufficient or still need improving for the coming future.  </font>
