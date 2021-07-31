@@ -1,0 +1,107 @@
+---
+title: "A Tufte Handout Example"
+runningheader: "Tufte Handout with R Markdown" # only for pdf output
+subtitle: "An implementation in R Markdown" # only for html output
+authors: "Raphael Lee, Javier Bolong, Allen Abel, Tricia Pulmano"
+date: "`r Sys.Date()`"
+output:
+  tufte::tufte_html: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+bibliography: skeleton.bib
+link-citations: yes
+---
+
+[START HERE]
+
+#Intro
+
+
+
+#Hypothesis Testing
+
+Hypothesis:
+
+$H_0: \mu =  60$
+
+$H_1: \mu > 60$
+
+For this data set, we use a confidence interval of 95%.
+
+Meaning, $\alpha=0.05$
+
+We are testing this set of data on whether the amount of tires recycled on average, is more than 60 million tons.
+
+Given this data, we should first look for the Population mean and Population variance.
+These values will help us 
+``` {r data, echo=FALSE}
+library(readxl)
+Tables <- read_excel("~/GitHub/Group-2-Third-Markdown-Project/Tables.xlsx")
+Waste <- Tables$`Waste tire`
+Recycled <- Tables$`Amount of recyled`
+summary(Waste,Recycled)
+
+
+plot(Waste, Recycled)
+
+```
+$\bar{x} = 94.55153448$
+
+$\sigma^2 = 15,362.6468$
+
+
+Then, we select 10 samples randomly and conduct a t-test on the sample selected
+
+We select:
+
+1. Denmark (38.0016)
+2. Greece (30.0016)
+3. Italy (354.0189)
+4. Norway (31.011)
+5. Czech Republic (45.0015)
+6. Portugal (65.9988)
+7. UK (394.9865)
+8. Netherlands (61.9983)
+9. Bulgaria (19.008)
+10. Turkey (136.006)
+
+Computing for Sample mean and standard deviation:
+Sample Mean ($\bar{x}$)= 117.60322
+Sample Standard Deviation = 139.613811
+
+
+We use the equation:
+
+$t = \frac{\bar{x}-\mu}{s/\sqrt{n}}$
+
+Solving:
+``` {r t-test, include=TRUE, echo=FALSE}
+t <- (117.60322-60)/(139.613811/sqrt(10))
+t
+```
+
+Then we compare the t value above to the value obtained in the t distribution with a confidence interval of 95%
+``` {r tdistribution, include=TRUE, echo=FALSE}
+u <- qt(c(0.95), df=9)
+u
+```
+`r t` < `r u`
+
+Because the t test value is less than the t distribution value, we fail to reject the null hypothesis.
+
+Furthermore, if we find the p-value of the equation
+``` {r pvalue, echo=FALSE}
+p <- 1-pnorm(t)
+p
+```
+
+The p-value is more than 0.05, therefore we fail to reject the null hypothesis.
+
+`r p` > 0.05
+
+
+
