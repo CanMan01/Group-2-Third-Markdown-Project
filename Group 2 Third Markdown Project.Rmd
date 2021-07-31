@@ -18,9 +18,11 @@ link-citations: yes
 
 [START HERE]
 
-Intro
+#Intro
 
-Hypothesis Testing
+
+
+#Hypothesis Testing
 
 Hypothesis:
 
@@ -100,5 +102,6 @@ p
 The p-value is more than 0.05, therefore we fail to reject the null hypothesis.
 
 `r p` > 0.05
+
 
 
